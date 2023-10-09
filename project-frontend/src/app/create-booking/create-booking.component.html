@@ -1,0 +1,74 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-6">
+            <form #bookingForm="ngForm">
+                <h1 style="font-size: xx-large">Movie name: {{movie.title}}</h1>
+                <br>
+                <mat-form-field>
+                    <mat-label>Choose a theatre</mat-label>
+                    <mat-select [(value)]="theatre" (selectionChange)="onTheatreSelectionChange()">
+                        <mat-option *ngFor="let theatre of theatres" [value]="theatre">
+                            {{theatre.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                    <mat-label>Choose a show</mat-label>
+                    <mat-select [(value)]="show" (selectionChange)="onShowSelectionChange()">
+                        <mat-option *ngFor="let show of shows" [value]="show">
+                            {{show.startTime}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <br>
+                <h2>Total cost: {{selectedSeatsCount * this.movie.price}}</h2>
+                <br>
+                <button mat-raised-button color="warn" (click)="addBooking(bookingForm)">Book</button>
+            </form>
+        </div>
+        <div class="col-6">
+            <div class="movie-container" *ngIf="ready">
+                <div class="row">
+                    <div class="col-md-8 offset-md-2">
+                        <ul class="showcase">
+                            <li>
+                                <div class="seat"></div>
+                                <small>Available</small>
+                            </li>
+                            <li>
+                                <div class="seat selected"></div>
+                                <small>Selected</small>
+                            </li>
+                            <li>
+                                <div class="seat taken"></div>
+                                <small>Taken</small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 offset-md-2">
+                            <div class="screen"></div>
+                            <div class="row" style="margin-bottom: 10px">
+                                <div class="seat" *ngFor="let seat of selectedOrTakenSeats" [class.selected]="seat.selected"
+                                    [class.taken]="seat.taken" (click)="toggleSeatSelection(seat)"></div>
+                            </div>
+
+                            <p class="text">
+                                You have selected <span id="count">{{ selectedSeatsCount }}</span> seats.
+                            </p>
+                            <p class="text">
+                                You have selected the seats: 
+                                <ng-container *ngFor="let seat of selectedOrTakenSeats">
+                                    <span *ngIf="seat.selected">{{ seat.seatNumber }} </span>
+                                  </ng-container>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

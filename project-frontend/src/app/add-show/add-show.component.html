@@ -1,0 +1,43 @@
+<div class="container mt-5" style="width: 700px">
+    <div class="card p-2">
+        <div class="row">
+            <div class="col-6">
+                <form #showForm="ngForm" (ngSubmit)="addShow(showForm)">
+                    <mat-form-field>
+                        <mat-label>Choose a movie</mat-label>
+                        <mat-select [(value)]="movie">
+                            <mat-option *ngFor="let movie of movies" [value]="movie">
+                                {{movie.title}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Choose a theatre</mat-label>
+                        <mat-select [(value)]="theatre" (selectionChange)="onTheatreSelectionChange()">
+                            <mat-option *ngFor="let theatre of theatres" [value]="theatre">
+                                {{theatre.name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Choose a screen</mat-label>
+                        <mat-select [(value)]="screen">
+                            <mat-option *ngFor="let screen of screens" [value]="screen">
+                                {{screen.name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Show start time</mat-label>
+                        <input matInput placeholder="Show start time" [(ngModel)]="show.startTime" name="startTime">
+                    </mat-form-field>
+                    <div>
+                        <button mat-stroked-button color="primary" style="margin-right: 10px;">Clear</button>
+                        <button *ngIf="isNewShow" mat-stroked-button color="primary" type="submit">Add show</button>
+                        <button *ngIf="!isNewShow" mat-stroked-button color="primary" type="submit">Edit show</button>
+                    </div>
+                </form>
+            </div>
+        </div>    
+    </div>
+</div>

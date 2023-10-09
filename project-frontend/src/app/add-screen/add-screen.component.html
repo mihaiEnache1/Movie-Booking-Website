@@ -1,0 +1,31 @@
+<div class="container mt-5" style="width: 700px">
+    <div class="card p-2">
+        <div class="row">
+            <div class="col-6">
+                <form #screenForm="ngForm" (ngSubmit)="addScreen(screenForm)">
+                    <mat-form-field>
+                        <mat-label>Choose a theatre</mat-label>
+                        <mat-select [(value)]="theatre">
+                            <mat-option *ngFor="let theatre of theatres" [value]="theatre">
+                                {{theatre.name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Screen name</mat-label>
+                        <input matInput placeholder="Screen name" [(ngModel)]="screen.name" name="name">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Screen capacity</mat-label>
+                        <input matInput placeholder="Screen capacity" [(ngModel)]="screen.capacity" name="capacity">
+                    </mat-form-field>
+                    <div>
+                        <button mat-stroked-button color="primary" style="margin-right: 10px;">Clear</button>
+                        <button *ngIf="isNewScreen" mat-stroked-button color="primary" type="submit">Add screen</button>
+                        <button *ngIf="!isNewScreen" mat-stroked-button color="primary" type="submit">Edit screen</button>
+                    </div>
+                </form>
+            </div>
+        </div>    
+    </div>
+</div>

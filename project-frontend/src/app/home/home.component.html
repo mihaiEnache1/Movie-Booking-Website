@@ -1,0 +1,25 @@
+<div class="container mt-5">
+  <div class="input-container">
+    <mat-form-field appearance="outline" class="w-50">
+      <mat-label>Search movie</mat-label>
+        <input #searchkeyword (keyup)="searchMovie(searchkeyword.value)" matInput ngModel name="searchKey" id="searchKey" placeholder="Search movie">
+        <mat-icon matPrefix>search</mat-icon>
+    </mat-form-field>
+  </div>
+  <mat-grid-list cols="4" rowHeight="3:5" gutterSize="10">
+    <mat-grid-tile *ngFor="let m of movieDetails">
+      <div class="row image">
+        <img [src]="m.movieImages[0].url" alt="">
+        <div class="mt-3">
+          <p><b>{{m.title}}</b></p>
+        </div>
+        <div class="mt-2 button-container">
+          <button type="button" mat-raised-button color="warn" (click)="showMovieDetails(m.id)">View</button>
+        </div>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <div class="text-center mt-5" style="padding-bottom: 30px;" *ngIf="showLoadButton">
+    <button type="button" mat-raised-button color="primary" (click)="loadMoreMovies()">Load more</button>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<div class="container mt-5" style="width: 700px">
+    <div class="card p-2">
+        <div class="row">
+            <div class="col-6">
+                <form #seatForm="ngForm" (ngSubmit)="addSeat(seatForm)">
+                    <mat-form-field>
+                        <mat-label>Choose a show</mat-label>
+                        <mat-select [(value)]="show">
+                            <mat-option *ngFor="let show of shows" [value]="show">
+                                {{show.startTime}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Seat number</mat-label>
+                        <input matInput placeholder="Seat number" [(ngModel)]="seat.seatNumber" name="seatNumber">
+                    </mat-form-field>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Seat availability</mat-label>
+                        <input matInput placeholder="Screen capacity" [(ngModel)]="seat.isAvailable" name="availability">
+                    </mat-form-field>
+                    <div>
+                        <button mat-stroked-button color="primary" style="margin-right: 10px;">Clear</button>
+                        <button *ngIf="isNewSeat" mat-stroked-button color="primary" type="submit">Add seat</button>
+                        <button *ngIf="!isNewSeat" mat-stroked-button color="primary" type="submit">Edit seat</button>
+                    </div>
+                </form>
+            </div>
+        </div>    
+    </div>
+</div>

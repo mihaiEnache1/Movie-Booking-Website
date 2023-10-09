@@ -1,0 +1,19 @@
+<div class="container mt-5" style="width: 700px">
+    <div class="card p-2">
+        <div class="row">
+            <div class="col-6">
+                <form #theatreForm="ngForm" (ngSubmit)="addTheatre(theatreForm)">
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Theatre name</mat-label>
+                        <input matInput placeholder="Theatre name" [(ngModel)]="theatre.name" name="name">
+                    </mat-form-field>
+                    <div>
+                        <button mat-stroked-button color="primary" style="margin-right: 10px;">Clear</button>
+                        <button *ngIf="isNewTheatre" mat-stroked-button color="primary" type="submit">Add theatre</button>
+                        <button *ngIf="!isNewTheatre" mat-stroked-button color="primary" type="submit">Edit theatre</button>
+                    </div>
+                </form>
+            </div>
+        </div>    
+    </div>
+</div>

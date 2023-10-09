@@ -1,0 +1,17 @@
+.space-buttons {
+    flex: 1 1 auto;
+    background-color: black;
+}
+
+.flex-container {
+    display: flex;
+    align-items: center;
+}
+
+.flex-item {
+    flex: 1;
+    margin-right: 10px;
+    height: 40px;
+}
+
+  

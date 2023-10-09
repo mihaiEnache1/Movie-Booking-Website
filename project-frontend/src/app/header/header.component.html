@@ -1,0 +1,24 @@
+<mat-toolbar color="primary" style="height: 50px;">
+  <span style="margin-right: 15px; font-size: larger;">
+    BookMyShow
+  </span>
+  <span class="space-buttons"></span>
+  <button *ngIf="!isLoggedIn()" routerLink="/login" mat-raised-button color="warn">
+    Login
+  </button>
+  <button *ngIf="isLoggedIn() && !isAdmin()" routerLink="/showBookings" mat-raised-button style="margin-right: 10px;">My Bookings</button>
+  <button *ngIf="isLoggedIn()" (click)="logout()" mat-raised-button color="warn">
+    Logout
+  </button>
+</mat-toolbar>
+
+<mat-toolbar color="primary" *ngIf="isLoggedIn()">
+  <button mat-raised-button routerLink="/" style="margin-right: 10px;">Home</button>
+  <button *ngIf="isAdmin()" mat-raised-button routerLink="/add" style="margin-right: 10px;">Add Movie</button>
+  <button *ngIf="isAdmin()" mat-raised-button routerLink="/show" style="margin-right: 10px;">Show Movie Details</button>
+  <button *ngIf="isAdmin()" mat-raised-button routerLink="/addTheatre" style="margin-right: 10px;">Add Theatre</button>
+  <button *ngIf="isAdmin()" mat-raised-button routerLink="/addScreen" style="margin-right: 10px;">Add Screen</button>
+  <button *ngIf="isAdmin()" mat-raised-button routerLink="/addShow" style="margin-right: 10px">Add Show</button>
+  <button *ngIf="isAdmin()" mat-raised-button routerLink="/addSeat" style="margin-right: 10px">Add Seat</button>
+  <button *ngIf="isAdmin()" mat-raised-button (click)="notify()">Notify</button>
+</mat-toolbar>

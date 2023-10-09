@@ -1,0 +1,16 @@
+.movie-info {
+    font-size: medium;
+}
+
+.rating-container {
+    display: flex;
+    align-items: center;
+}
+
+.rating-value {
+    margin-right: 5px;
+}
+
+.rating-icon {
+    margin-left: 5px;
+}
